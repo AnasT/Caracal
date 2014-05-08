@@ -1,0 +1,5 @@
+suites:
+    caracal_suite:
+        namespace: AnasT
+        src_path: src
+formatter.name: pretty
