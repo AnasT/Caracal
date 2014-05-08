@@ -1,0 +1,4 @@
+Caracal
+=======
+
+Simple auth package.
