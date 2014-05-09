@@ -2,13 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 
-use AnasT\Caracal\Roles\Role;
 use AnasT\Caracal\Accounts\Account;
 use AnasT\Caracal\Mailing\CaracalMailer;
-use AnasT\Caracal\Permissions\Permission;
-use AnasT\Caracal\Repositories\Roles\EloquentRoleRepository;
 use AnasT\Caracal\Repositories\Accounts\EloquentAccountRepository;
-use AnasT\Caracal\Repositories\Permissions\EloquentPermissionRepository;
 
 class CaracalServiceProvider extends ServiceProvider {
 
@@ -92,7 +88,7 @@ class CaracalServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return [];
+		return ['caracal'];
 	}
 
 }
