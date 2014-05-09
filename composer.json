@@ -4,7 +4,6 @@
     "keywords": ["laravel", "authentication", "authorization", "auth"],
     "license": "MIT",
     "homepage": "https://github.com/AnasT/Caracal",
-    "version": "0.1",
     "authors": [
         {
             "name": "Taha Anas",
