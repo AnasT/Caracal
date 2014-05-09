@@ -1,25 +1,11 @@
 <?php namespace AnasT\Caracal\Repositories\Accounts;
 
-use Illuminate\Foundation\Application;
-use Illuminate\Database\Eloquent\Model;
 use AnasT\Caracal\Repositories\Crudable;
 use AnasT\Caracal\Repositories\Paginable;
 use AnasT\Caracal\Repositories\Repository;
 use AnasT\Caracal\Repositories\AbstractRepository;
 
 class EloquentAccountRepository extends AbstractRepository implements Crudable, Paginable, Repository, AccountRepositoryInterface {
-
-    /**
-     * Create a new instance of EloquentAccountRepository.
-     *
-     * @param Illuminate\Foundation\Application $app
-     * @param Illuminate\Database\Eloquent\Model $model
-     * @return void
-     */
-    public function __construct(Application $app, Model $model)
-    {
-        parent::__construct($app, $model);
-    }
 
     /**
      * Create a new account.

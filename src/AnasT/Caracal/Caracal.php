@@ -3,9 +3,7 @@
 use DateTime;
 use AnasT\Mailing\MailingInterface;
 use Illuminate\Foundation\Application;
-use AnasT\Caracal\Repositories\Roles\RoleRepositoryInterface;
 use AnasT\Caracal\Repositories\Accounts\AccountRepositoryInterface;
-use AnasT\Caracal\Repositories\Permissions\PermissionRepositoryInterface;
 
 class Caracal {
 
@@ -57,6 +55,17 @@ class Caracal {
     {
         return $this->app['auth']->user();
     }
+
+    /**
+     * Get the auth model.
+     *
+     * @return Illuminate\Database\Eloquent\Model $model
+     */
+    public function model()
+    {
+        return $this->accountRepo->model();
+    }
+
     /**
      * Registers an account.
      *

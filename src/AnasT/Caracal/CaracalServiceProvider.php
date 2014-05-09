@@ -67,7 +67,8 @@ class CaracalServiceProvider extends ServiceProvider {
     {
         $this->app->bind('caracal.repositories.account', function($app)
         {
-            return new EloquentAccountRepository($app, new Account);
+            $model = $app['config']->get('auth.model');
+            return new EloquentAccountRepository($app, new $model);
         });
     }
 
