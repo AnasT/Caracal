@@ -281,12 +281,11 @@ class Account extends \Eloquent implements UserInterface, RemindableInterface {
     /**
      * Activate the account.
      *
-     * @param string $code
      * @return boolean
      */
-    public function activate($code)
+    public function activate()
     {
-        if(! $this->activated && $code == $this->activation_code)
+        if(! $this->activated)
         {
             $this->activation_code = null;
             $this->activated = true;

@@ -78,7 +78,7 @@ class Caracal {
         if($account = $this->accountRepo->create($attributes))
         {
             ($activate)
-            ? $account->activate($account->activation_code)
+            ? $account->activate()
             : $this->mailer->sendActivationEmail($account);
         }
 
@@ -112,6 +112,22 @@ class Caracal {
         }
 
         $this->attemptsCount($credentials);
+
+        return false;
+    }
+
+    /**
+     * Activates an account.
+     *
+     * @param string $code
+     * @return mixed
+     */
+    public function activate($code)
+    {
+        if($account = $this->accountRepo->findByActivationCode($code))
+        {
+            return $account->activate();
+        }
 
         return false;
     }
