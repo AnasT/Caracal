@@ -303,6 +303,17 @@ class Account extends \Eloquent implements UserInterface, RemindableInterface {
     }
 
     /**
+     * Records a login for the account.
+     *
+     * @return void
+     */
+    public function recordLogin()
+    {
+        $this->last_login = new DateTime;
+        $this->save();
+    }
+
+    /**
      * Set a given attribute on the model.
      *
      * @param string $key

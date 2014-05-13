@@ -106,7 +106,7 @@ class Caracal {
             {
                 $remember = isset($credentials['remember']) ? $credentials['remember'] : false;
                 $this->app['auth']->login($account, $remember);
-
+                $account->recordLogin();
                 return true;
             }
         }
@@ -154,7 +154,6 @@ class Caracal {
     {
         $attempt_key = $this->attemptCacheKey($credentials);
         $attempts = $this->app['cache']->get($attempt_key, 0);
-
         return $attempts >= 5;
     }
 
@@ -233,7 +232,6 @@ class Caracal {
                     ->table('password_reminders')
                     ->where('email', '=', $account->email)
                     ->delete();
-
                 return true;
             }
         }
