@@ -112,7 +112,6 @@ class Caracal {
         }
 
         $this->attemptsCount($credentials);
-
         return false;
     }
 
@@ -175,6 +174,17 @@ class Caracal {
     }
 
     /**
+     * Is the current IP throttled.
+     *
+     * @param array $credentials
+     * @return boolean
+     */
+    public function tooManyAttempts(array $credentials)
+    {
+        return $this->reachedAttemptsLimit($credentials);
+    }
+
+    /**
      * Send email with information about password reset.
      *
      * @param string $email
@@ -198,7 +208,6 @@ class Caracal {
                 ->insert($values);
 
             $this->mailer->sendResetPasswordEmail($account, $token);
-
             return true;
         }
 

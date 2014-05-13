@@ -258,7 +258,10 @@ class Account extends \Eloquent implements UserInterface, RemindableInterface {
             {
                 foreach($rolePermissions = $role->getPermissions() as $rolePermission)
                 {
-                    $permissions[$rolePermission['name']] = $rolePermission['pivot']['value'];
+                    $permissions[$rolePermission['name']] = [
+                        'display_name' => $rolePermission['display_name'],
+                        'value' => $rolePermission['pivot']['value']
+                    ];
                 }
             }
 
@@ -266,12 +269,15 @@ class Account extends \Eloquent implements UserInterface, RemindableInterface {
             {
                 if($accountPermission['pivot']['value'] != 0)
 
-                    $permissions[$accountPermission['name']] = $accountPermission['pivot']['value'];
+                    $permissions[$accountPermission['name']] = [
+                        'display_name' => $accountPermission['display_name'],
+                        'value' => $accountPermission['pivot']['value']
+                    ];
             }
 
             foreach ($permissions as $permission => $value)
             {
-                array_push($this->mergedPermissions, ['name' => $permission, 'pivot' => ['value' => $value]]);
+                array_push($this->mergedPermissions, ['name' => $permission, 'display_name' => $value['display_name'], 'pivot' => ['value' => $value['value']]]);
             }
         }
 
