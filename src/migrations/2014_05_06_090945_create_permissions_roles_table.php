@@ -16,7 +16,7 @@ class CreatePermissionsRolesTable extends Migration {
         {
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
-            $table->integer('value');
+            $table->boolean('value');
 
             $table->engine = 'InnoDB';
             $table->primary(['permission_id', 'role_id']);
